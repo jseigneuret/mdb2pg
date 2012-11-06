@@ -38,7 +38,7 @@ migrate_mdb2pg (){
         # - l'option q "'" est obligatoire car le texte doit être mis entre simple cote
         # - la commande sed -e "s/,\([0|1]\)\([,)]\)/,'\1'\2/g" permet de mettre entre cote 
         # les valeurs booléennes (elle est passée deux fois et c'est normal)
-        mdb-export -I postgres -D "%Y-%m-%d %h:%M:%S" -q "'" "$FILE" "$table" | \
+        mdb-export -I postgres -D "%Y-%m-%d %H:%M:%S" -q "'" "$FILE" "$table" | \
         sed -e "s/,\([0|1]\)\([,)]\)/,'\1'\2/g" |\
         sed -e "s/,\([0|1]\)\([,)]\)/,'\1'\2/g" |\
         psql -d $DB
