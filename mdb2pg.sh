@@ -22,8 +22,6 @@ migrate_mdb2pg (){
     echo "file: $FILE"
     #3) dump des tables, des clés primaires et des index
     echo "Création de la structure de la base de données"
-        mdb-schema "$FILE" postgres | \
-    sed -e '/-- CREATE Relationships .../,/},\.$/d' > database.sql
     mdb-schema "$FILE" postgres | \
     sed -e '/-- CREATE Relationships .../,/},\.$/d'\
     | psql -d $DB
